@@ -1,14 +1,11 @@
 import bigInt from 'big-integer'
 import { Spinner } from 'cli-spinner'
-
+/**
+ * Codigo basado en https://en.wikipedia.org/wiki/RSA_(cryptosystem)#Code
+ * Que a su vez está basado en https://github.com/kubrickology/Bitcoin-explained/blob/master/RSA.js
+ * Codigo usa BigInteger.js https://github.com/peterolson/BigInteger.js para manejar integer grandes
+ */
 class RSA {
-  
-  /**
-   * Generates a random k-bit prime greater than √2 × 2^(k-1)
-   *
-   * @param   {bits} int, bitlength of desired prime
-   * @returns {bigInt} a random generated prime
-   */
   generate(keysize: number){    
     if (bigInt(keysize).isOdd()){
       throw new Error('Tamaño de llave impar. El Tamaño de la llave tiene que ser par')
@@ -50,27 +47,10 @@ class RSA {
       d: e.modInv(lambda),  // private key d = e^(-1) mod λ(n)
     };    
   }
-
-  /**
- * Encrypt
- *
- * @param   {m} int / bigInt: the 'message' to be encoded
- * @param   {n} int / bigInt: n value returned from RSA.generate() aka public key (part I)
- * @param   {e} int / bigInt: e value returned from RSA.generate() aka public key (part II)
- * @returns {bigInt} encrypted message
- */
   encrypt(m:bigInt.BigInteger, n:bigInt.BigInteger, e:bigInt.BigInteger): bigInt.BigInteger{
     return m.modPow(e, n);
   }
 
-  /**
- * Decrypt
- *
- * @param   {c} int / bigInt: the 'message' to be decoded (encoded with RSA.encrypt())
- * @param   {d} int / bigInt: d value returned from RSA.generate() aka private key
- * @param   {n} int / bigInt: n value returned from RSA.generate() aka public key (part I)
- * @returns {bigInt} decrypted message
- */
   decrypt(c:bigInt.BigInteger, d:bigInt.BigInteger, n:bigInt.BigInteger){
     return c.modPow(d, n);
   }

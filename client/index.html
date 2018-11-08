@@ -10,23 +10,30 @@
 </head>
 <body>
   <div class="content">
-    <h2>Llaves</h2>
+    <h2>Keys</h2>
     <ul>
-      <li>Publica 1: </li>
-      <li>Publica 2: </li>
-      <li>Privada: </li>
+      <li id="public1"></li>
+      <li id="public2"></li>
+      <li id="private"></li>
     </ul>
-    <button>Generar llaves</button>
+    <button onclick="generateKeys()">Generate keys</button>
     <hr>
-    <h2>Encriptar</h2>
-    <input type="text">
-    <button>Encriptar</button>
+    <h2>Encrypt</h2>
+    <input id="enc-1" placeholder="Public 1" type="text">
+    <input id="enc-2" placeholder="Public 2" type="text">
+    <br><br>
+    <input id="enc-m" placeholder="Message" type="text">
+    <button onclick="encrypt()">Encrypt</button>
+    <p id="enc-c"></p>
 
     <hr>
 
-    <h2>Desencriptar</h2>
-    <input type="text">
-    <button>Desencriptar</button>
+    <h2>Decrypt</h2>
+    <input id="dec-1" placeholder="Private" type="text">
+    <input id="dec-2" placeholder="Public 1" type="text">
+    <br><br>
+    <input placeholder="Encrypted array" id="dec-c" type="text">
+    <button>Decrypt</button>
   </div>  
 </body>
 </html>
