@@ -42,7 +42,8 @@ class RSA {
     } while (bigInt.gcd(e, lambda).notEquals(1) || p.minus(q).abs().shiftRight(
         keysize / 2 - 100).isZero());
 
-    spinner.stop(true)
+    spinner.stop(false)
+    console.log('Claves generadas')
     return {
       n: p.multiply(q),  // public key (part I)
       e: e,  // public key (part II)

@@ -1,7 +1,18 @@
 import RSA from './RSA'
 import chalk from 'chalk'
-import bigInt from 'big-integer';
+import bigInt from 'big-integer'
+import app from './App'
 
+const port: any = process.env.PORT || 8180
+
+app.server.listen(port, '0.0.0.0', (err: any) => {
+  if (err){
+    console.log(err)
+  }
+
+  console.log(chalk.cyan(`Servidor está en puerto ${port}`))
+})
+/*
 process.stdin.on('readable', () => {
   const chunk = process.stdin.read();
   if (chunk !== null) {
@@ -21,3 +32,4 @@ process.stdin.on('readable', () => {
     }
   }
 });
+*/
