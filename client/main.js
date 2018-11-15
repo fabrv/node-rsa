@@ -1,4 +1,4 @@
-const url='http://rsa-node.herokuapp.com';
+const url='http://rsa-node.herokuapp.com/';
 function generateKeys(){
   const Http = new XMLHttpRequest();
   const params =  `keys/ ${(Math.floor(Math.random()* 100) + 10)*2}`
