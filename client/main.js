@@ -1,7 +1,7 @@
-const url='http://rsa-node.herokuapp.com/';
+const url='http://localhost:8180/';
 function generateKeys(){
   const Http = new XMLHttpRequest();
-  const params =  `keys/ ${(Math.floor(Math.random()* 100))*2}`
+  const params =  `keys/ ${(Math.floor(Math.random()* 100) + 10)*2}`
   const req = url + params
   Http.open("GET", req);
   Http.send();
@@ -26,6 +26,20 @@ function encrypt(){
   Http.send();
   Http.onreadystatechange=(e)=>{
     document.getElementById('enc-c').innerHTML = Http.responseText
-    //console.log(Http.responseText)
+  }
+}
+
+function decrypt(){
+  const Http = new XMLHttpRequest();
+  const c = encodeURIComponent(document.getElementById('dec-c').value.trim())
+  const d = document.getElementById('dec-1').value
+  const n = document.getElementById('dec-2').value
+  const params =  `decrypt/${c}/${d}/${n}`  
+  const req = url + params
+  
+  Http.open("GET", req);
+  Http.send();
+  Http.onreadystatechange=(e)=>{
+    document.getElementById('dec-m').innerHTML =  `${JSON.parse(Http.responseText).message}`
   }
 }

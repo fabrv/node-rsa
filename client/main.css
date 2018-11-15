@@ -6,15 +6,18 @@
 body{
   font-family: 'Montserrat Regular', sans-serif;
   background-color: #eeeeee;
+  padding-top: 30px;
+  padding-bottom: 65px;
 }
 
 .content{
   background-color: white;
-  position: absolute;
   width: 600px;
+  margin: auto;
+  /*position: absolute;  
   top:50%;
   left: 50%;
-  transform: translateY(-65%) translateX(-50%);
+  transform: translateY(-52%) translateX(-50%);*/
   text-align: center;
   padding: 10px;
   padding-bottom: 50px;
@@ -105,7 +108,7 @@ button:disabled{
   cursor: not-allowed;
 }
 
-input{
+input, textarea{
   font-family: 'Montserrat Regular', sans-serif;
   padding: 10px;
   margin-right: 8px;
@@ -113,7 +116,7 @@ input{
   border-radius: 10px;
   transition: all .3s;
 }
-input:focus {
+input:focus, textarea:focus {
   box-shadow: 0 0 0 2px rgba(85, 85, 255, 0.557);
   border: solid 1px transparent;
   outline:0;
@@ -122,4 +125,14 @@ input:focus {
 hr{
   border: 1px solid #eeeeee;
   margin-top: 25px;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(238, 238, 238, 0.5);
 }

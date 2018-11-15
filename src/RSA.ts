@@ -26,7 +26,7 @@ class RSA {
     }
 
     // set up variables for key generation
-    const e = bigInt(65537);  // use fixed public exponent
+    const e = bigInt(randomPrime(40));  // use random prime for public exponent
     let p;
     let q;
     let lambda;
